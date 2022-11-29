@@ -3,13 +3,25 @@
 <head></head>
 <body>
 <div id="app">
-
+    <input type="text" id="user_id" v-model="userId">
+    <!-- v2모델 어트리뷰트로 하단의 변수명을 지정해주면 밸류값이 js의 변수값과 동기화 된다. -->
+    <input type="text" id="user_pwd" v-model="userPassword">
+    아이디 : {{ userId }}
+    <!-- 콧수염 처럼 생겨서 머스타치 표현식으로 불림 -->
+    비번 : {{ userPassword }}
 </div>
 </body>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
     new Vue({
-        el:'#app'
+        el:'#app',
+        // el은 뷰에 연결할 html돔 요소를 지정
+        data(){
+            return{
+                userId: '',
+                userPassword: '',
+            }
+        }
     })
 </script>
 </html>
