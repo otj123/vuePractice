@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head></head>
+<body>
+<div id="app">
+    <!-- 백틱 문자 써서 값을 받을 수 있음 -->
+    <img :id= "`thumb_${id}`" :src='image'>
+    <div :style="[style, fontStyle]">
+        테스트용 디브
+    </div>
+</div>
+</body>
+<script  src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el:'#app',
+        // el은 뷰에 연결할 html돔 요소를 지정
+        data(){
+            return{
+                id : 1,
+                image: 'https://picsum.photos/210/118/?Image=200',
+                style:{
+                    background:'red'
+                },
+                fontStyle: {
+                    fontSize: '100px',
+                    fontFamily : 'dotum'
+                }
+            };
+        }
+    });
+</script>
+</html>
