@@ -32,7 +32,9 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
-    new Vue({
+    //뷰 객체에 접근하기 편하게 변수를 생성하고 객체를 저장함
+    //콘솔에 app.products.push({id:5, image:'https://picsum.photos/210/118/?Image=100', title:'추가'}); 입력해보기
+    let app = new Vue({
         el:'#app',
         // el은 뷰에 연결할 html돔 요소를 지정
         data(){
