@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head></head>
+<body>
+<div id="app">
+   <ul>
+        <li v-for="item in products">
+            {{item.id}}
+            <!-- <img src="{{item.image}}"> 요러케 하면 머스테치가 안 먹힘-->
+            <img :src="item.image">           
+            {{item.title}}
+        </li>
+   </ul>
+   <!--구분 해서 찍는 법
+        템플릿 태그는 로드 될때 렌더링 되지 않아 
+        사용자에게는 보이지 않는다.
+        나중에 자바스크립트를 사용하여, 
+        해당 콘텐츠를 복제한 후 보이도록 렌더링할 수 있음-->
+   <ul>
+        <template v-for="item in products">
+            <li>
+                {{item.id}}
+                <img :src="item.image">           
+            </li>
+            <li>
+            {{item.title}}
+            </li>
+        </template>
+    </ul>
+
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        // el은 뷰에 연결할 html돔 요소를 지정
+        data(){
+            return{
+               products: [
+                {
+                    id:1,
+                    image: 'https://picsum.photos/210/118/?Image=1',
+                    // name: '상품명1',
+                    // price: 3000
+                    title : '사진1'
+                },
+                {
+                    id:2,
+                    image: 'https://picsum.photos/210/118/?Image=100',
+                    title : '사진2'
+                },
+                {
+                    id:3,
+                    image: 'https://picsum.photos/210/118/?Image=160',
+                    title : '사진3'
+                },
+                {
+                    id:4,
+                    image: 'https://picsum.photos/210/118/?Image=200'
+                    ,title : '사진4'
+                },
+               ]
+            }
+        }
+    })
+</script>
+</html>
