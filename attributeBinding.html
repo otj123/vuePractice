@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head></head>
+<head>
+<style>
+    .dropdown ul {
+        display:  none;
+        list-style: none;
+        margin: 0;
+        border: 1px solid black;
+        padding : 10px;
+        width : 200px;
+    }
+    .dropdown.on ul{
+        display:block;
+    }
+</style>
+</head>
 <body>
 <div id="app">
     <!-- 백틱 문자 써서 값을 받을 수 있음 -->
     <img :id= "`thumb_${id}`" :src='image'>
-    <div :style="[style, fontStyle]">
+    <div :style="[style, fontStyle]" :class="[dropdown, toggle]">
         테스트용 디브
+        <ul>
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+        </ul>
     </div>
 </div>
 </body>
@@ -25,6 +43,10 @@
                 fontStyle: {
                     fontSize: '100px',
                     fontFamily : 'dotum'
+                },
+                dropdown: 'dropdown',
+                toggle:{
+                    on : false
                 }
             };
         }
