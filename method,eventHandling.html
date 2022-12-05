@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+        .dropdown ul {
+            display:  none;
+            list-style: none;
+            margin: 0;
+            border: 1px solid black;
+            padding : 10px;
+            width : 200px;
+        }
+        .dropdown.on ul{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+  <button type="button" v-on:click="add">변수 확인</button><br>
+  <button type="button" @click="add">변수 확인2</button><br>
+  <!-- v-on 콜론을 쓰면 자바스크립트 영역이 되어 이벤트를 받을 수 있다. -->
+  <button type="button" v-on:click="counter++">더하기</button>
+  <!-- <input type="text" @keyup="keyUp"> -->
+  <input type="text" @keyup.enter="keyUp"/>
+  엔터를 눌렀을때 작동하게 만들수도 있다.
+  {{counter}}
+  <button type="button" @click="btnClick">토글 버튼</button>
+  <div :class="[dropdown, toggle]">
+    테스트용 디브
+    <ul>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+    </ul>
+</div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el:'#app',
+        // el은 뷰에 연결할 html돔 요소를 지정
+        data(){
+            return{
+              counter:0,
+              dropdown: 'dropdown',
+                toggle:{
+                    on : false
+                }  
+            };
+        },
+        methods:{
+            add() {
+                this.counter++;
+                console.log(this.counter);
+            },
+            // add: () =>{console.log(this.counter);} 주석 풀고 찍어보면 카운터의 값을 찾을 수 없다고 나옴(화살표 함수는 쓰지 말것)
+            keyUp(ev) {
+                if (ev.KeyCode !== 13) {
+                    console.log('엔터키 아님');
+                    return;
+                }
+
+                console.log('엔터키 눌림');
+            },
+            btnClick(){
+                this.toggle.on = ! this.toggle.on;
+            }
+        }
+    });
+</script>
+</html>
